@@ -31,7 +31,19 @@ async function checkForSecrets() {
     process.exit(0);
   }
 
-  const checkForSecretsConfig = require("../check-for-secrets/checkforsecrets.config.json");
+  let checkForSecretsConfig = null;
+
+  try {
+    const checkForSecretsConfig = require("../../checkforsecrets.config.json");
+  } catch (error) {
+    console.log(
+      "Using standard config. You can add your own config by creating a checkforsecrets.config.json file on your main directory\n"
+    );
+  }
+
+  if (checkForSecretsConfig === null)
+    checkForSecretsConfig = require("../check-for-secrets/checkforsecrets.config.json");
+
   const ignoredFiles = checkForSecretsConfig.ignoredFiles;
   const patterns = checkForSecretsConfig.patterns;
 
@@ -44,7 +56,8 @@ async function checkForSecrets() {
         let files = execReturn.stdout.split("\n");
 
         if (files.length === 0) {
-          return notAllowedFiles;
+          process.stdout.write("\n\n🟡 No git cached files found\n\n");
+          process.exit(0);
         }
 
         for (let index = 0; index < files.length; index++) {
@@ -113,11 +126,6 @@ async function checkForSecrets() {
     process.stdout.write("\n");
     process.stdout.write("All the files must be checked and fixed!\n\n");
     process.exit(1);
-  }
-
-  if (notAllowedFiles != null && notAllowedFiles.length === 0) {
-    process.stdout.write("\n\n🟡 No git cached files found\n\n");
-    process.exit(0);
   }
 
   process.stdout.write("\n\n🟢 No bad patterns found\n\n");
