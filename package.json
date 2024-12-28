@@ -1,11 +1,13 @@
 {
   "name": "check-for-secrets",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Check specific patterns on git-cached files.",
   "main": "index.js",
+  "bin": {
+    "check-for-secrets": "index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "check-for-secrets": "node index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
