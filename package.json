@@ -1,0 +1,22 @@
+{
+  "name": "check-for-secrets",
+  "version": "1.0.0",
+  "description": "Check specific patterns on git-cached files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "check-for-secrets": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/F07RTE/check-for-secrets.git)"
+  },
+  "keywords": [
+    "check",
+    "secrets",
+    "password",
+    "key"
+  ],
+  "author": "Guilherme Forte",
+  "license": "ISC"
+}
