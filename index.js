@@ -26,7 +26,7 @@ async function checkForSecrets() {
   let notAllowedFiles = await checkForSecrets();
 
   if (notAllowedFiles != null && notAllowedFiles.length > 0) {
-    process.stdout.write("\n\n🔴 Files with not allowed patterns:\n");
+    process.stdout.write("\n\n🔴 Files with not allowed patterns found:\n");
     for (let index = 0; index < notAllowedFiles.length; index++) {
       const matchedFile = notAllowedFiles[index];
       console.log(matchedFile);
