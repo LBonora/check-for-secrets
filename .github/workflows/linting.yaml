@@ -13,6 +13,6 @@ jobs:
         with:
           node-version: v20.18.1
 
-      - run: npm ci
+      - run: npm i
 
       - run: npm run lint:prettier:check
